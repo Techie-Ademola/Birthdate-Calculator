@@ -45,10 +45,12 @@
             max="2023"
             maxlength="4"
             required
-            oninput="moveToNext(event, 'button')"
+            oninput="moveToNext(event, 'day')"
           />
         </div>
-  
+        <div>      
+          <span id="error-message" style="color:red; font-style: italic;"></span>
+        </div>
         <button id="button" class="ready" onclick="calculateAge();">
           <div class="message submitMessage">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 12.2">

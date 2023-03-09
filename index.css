@@ -22,11 +22,12 @@ body {
   border-radius: 0px;
   padding: 40px;
   text-align: center;
+  background-image: linear-gradient(to bottom right, #111 0%, #111E25 100%);  
 }
 .container h1 {
   font-family: 'Sofia';
   font-size: 2.5em;
-  color: #222;
+  color: #5c86ff;
   line-height: 1;
   margin: 20px 0;
 }
@@ -35,6 +36,7 @@ body {
   font-weight: 600;
   font-style: italic;
   margin: 20px 0;
+  color: #ff3c7b;
 }
 .container .dates {
   display: flex;
@@ -45,7 +47,7 @@ body {
 }
 .dates input {
   width: 100%;
-  padding: 15px;
+  padding: 15px 10px;
   font-size: 2em;
   text-align: center;
   font-weight: 700;
@@ -276,11 +278,13 @@ button.complete .successMessage svg {
 .card {
     position: relative;
     width: fit-content;
+    max-width: 95%;
     height: 100%;
     background: royalblue;
     transition: 0.5s;
     border-radius: 0px;
     overflow: hidden;
+    padding: 5px;
 }
 .card .lines {
     position: absolute;
@@ -310,9 +314,21 @@ button.complete .successMessage svg {
 .card .lines::after {
     content: '';
     position: absolute;
-    inset: 3px;
-    background: linear-gradient(140grad, #98aed5, #643986);  
-    border-radius: 0px;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: 120px;
+    background: linear-gradient(transparent, #ff3c7b, #ff3c7b, #ff3c7b, transparent);
+    animation: animateTwo 4s linear infinite;
+    animation-play-state: running;
+}
+@keyframes animateTwo {
+  0% {
+      transform: translate(-50%, -50%) rotate(360deg);
+  }
+  100% {
+      transform: translate(-50%, -50%) rotate(0deg);
+  }
 }
 @media screen and (max-width: 500px) {
     .container {
@@ -322,6 +338,6 @@ button.complete .successMessage svg {
         gap: 10px;
     }
     .dates input {
-        padding: 0px;
+        padding: 10px 0;
     }
 }

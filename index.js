@@ -3,10 +3,54 @@ function pageLoaded() {
 }
 window.onload = pageLoaded;
 
+let dayInput = document.getElementById("day");
+let monthInput = document.getElementById("month");
+let yearInput = document.getElementById("year");
+const errorMessage = document.getElementById("error-message");
+
+dayInput.addEventListener("input", () => {
+  if (dayInput.value < 0 || dayInput.value == '00' || dayInput.value > 31) {
+    dayInput.value = '';
+    errorMessage.textContent = "Please enter a number between 1 and 31.";
+    input.setCustomValidity("Invalid input");
+  } else {
+    errorMessage.textContent = "";
+    input.setCustomValidity("");
+  }
+});
+
+monthInput.addEventListener("input", () => {
+  if (monthInput.value < 0 || monthInput.value == '00' || monthInput.value > 12) {
+    monthInput.value = '';
+    errorMessage.textContent = "Please enter a number between 1 and 12.";
+    input.setCustomValidity("Invalid input");
+  } else {
+    errorMessage.textContent = "";
+    input.setCustomValidity("");
+  }
+});
+
+yearInput.addEventListener("input", () => {
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const inputValue = yearInput.value;
+
+  if (inputValue < 0 || inputValue >= currentYear) {
+    yearInput.value = ''
+    errorMessage.textContent = "Please enter a number between 1900 and " + `${currentYear - 1}` + '.';
+    input.setCustomValidity("Invalid input");
+  } else {
+    errorMessage.textContent = "";
+    input.setCustomValidity("");
+  }
+});
+
+
 function moveToNext(event, nextInputId) {
   const input = event.target;
   const maxLength = input.getAttribute("maxlength");
   const currentLength = input.value.length;
+  
   if (currentLength === parseInt(maxLength)) {
     const nextInput = document.getElementById(nextInputId);
     nextInput.focus();
@@ -232,7 +276,6 @@ calculateAge = () => {
 
   let age = today.getFullYear() - birthday.getFullYear();
   let monthDiff = today.getMonth() - birthday.getMonth();
-  console.log(age);
   if (
     monthDiff < 0 ||
     (monthDiff === 0 && today.getDate() < birthday.getDate())
@@ -266,7 +309,7 @@ calculateAge = () => {
       let result = document.querySelector(".output");
       result.classList.add("animate");
       result.innerHTML =
-        "Congratulations Negro, You were born on " +
+        "Congratulations Dude 🎊🎉, You were born on " +
         birthday.toDateString() +
         ", which makes you " +
         age +
