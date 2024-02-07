@@ -1,5 +1,5 @@
 function pageLoaded() {
-    document.querySelector("body").style.opacity = 1;
+  document.querySelector("body").style.opacity = 1;
 }
 window.onload = pageLoaded;
 
@@ -9,8 +9,8 @@ let yearInput = document.getElementById("year");
 const errorMessage = document.getElementById("error-message");
 
 dayInput.addEventListener("input", () => {
-  if (dayInput.value < 0 || dayInput.value == '00' || dayInput.value > 31) {
-    dayInput.value = '';
+  if (dayInput.value < 0 || dayInput.value == "00" || dayInput.value > 31) {
+    dayInput.value = "";
     errorMessage.textContent = "Please enter a number between 1 and 31.";
     input.setCustomValidity("Invalid input");
   } else {
@@ -20,8 +20,12 @@ dayInput.addEventListener("input", () => {
 });
 
 monthInput.addEventListener("input", () => {
-  if (monthInput.value < 0 || monthInput.value == '00' || monthInput.value > 12) {
-    monthInput.value = '';
+  if (
+    monthInput.value < 0 ||
+    monthInput.value == "00" ||
+    monthInput.value > 12
+  ) {
+    monthInput.value = "";
     errorMessage.textContent = "Please enter a number between 1 and 12.";
     input.setCustomValidity("Invalid input");
   } else {
@@ -36,8 +40,9 @@ yearInput.addEventListener("input", () => {
   const inputValue = yearInput.value;
 
   if (inputValue < 0 || inputValue >= currentYear) {
-    yearInput.value = ''
-    errorMessage.textContent = "Please enter a number between 1900 and " + `${currentYear - 1}` + '.';
+    yearInput.value = "";
+    errorMessage.textContent =
+      "Please enter a number between 1900 and " + `${currentYear - 1}` + ".";
     input.setCustomValidity("Invalid input");
   } else {
     errorMessage.textContent = "";
@@ -45,16 +50,15 @@ yearInput.addEventListener("input", () => {
   }
 });
 
-
 function moveToNext(event, nextInputId) {
   const input = event.target;
   const maxLength = input.getAttribute("maxlength");
   const currentLength = input.value.length;
-  
+
   if (currentLength === parseInt(maxLength)) {
     const nextInput = document.getElementById(nextInputId);
     nextInput.focus();
-    document.querySelector('.output').innerText = '';
+    document.querySelector(".output").innerText = "";
   }
 }
 
@@ -306,22 +310,24 @@ calculateAge = () => {
     }
 
     setTimeout(() => {
+      const audio = document.getElementById("audio");
+      audio.play();
       let result = document.querySelector(".output");
       result.classList.add("animate");
       result.innerHTML =
-        "Congratulations Dude 🎊🎉, You were born on " +
+        "Congratulations Pal 🎊🎉, You were born on " +
         birthday.toDateString() +
         ", which makes you " +
         age +
         " years old.";
 
-        let day = document.getElementById("day");
-        let month = document.getElementById("month");
-        let year = document.getElementById("year");
+      let day = document.getElementById("day");
+      let month = document.getElementById("month");
+      let year = document.getElementById("year");
 
-        day.value = ''
-        month.value = ''
-        year.value = ''
+      day.value = "";
+      month.value = "";
+      year.value = "";
     }, 2200);
   } else {
     alert("Kindly input your birth date correctly!");

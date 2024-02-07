@@ -5,16 +5,22 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: linear-gradient(to bottom right, #111E25 0%, #111 100%);  
+  background-image: linear-gradient(to bottom right, #111E25 0%, #111 100%);
   -webkit-font-smoothing: antialiased;
   opacity: 0;
   transition: 4000ms opacity;
 }
+
+#audio {
+  display: none;
+}
+
 .container {
   position: relative;
   width: 500px;
@@ -22,8 +28,9 @@ body {
   border-radius: 0px;
   padding: 40px;
   text-align: center;
-  background-image: linear-gradient(to bottom right, #111 0%, #111E25 100%);  
+  background-image: linear-gradient(to bottom right, #111 0%, #111E25 100%);
 }
+
 .container h1 {
   font-family: 'Sofia';
   font-size: 2.5em;
@@ -31,6 +38,7 @@ body {
   line-height: 1;
   margin: 20px 0;
 }
+
 .container p {
   font-size: 1.1em;
   font-weight: 600;
@@ -38,6 +46,7 @@ body {
   margin: 20px 0;
   color: #ff3c7b;
 }
+
 .container .dates {
   display: flex;
   justify-content: space-between;
@@ -45,6 +54,7 @@ body {
   gap: 50px;
   padding: 10px;
 }
+
 .dates input {
   width: 100%;
   padding: 15px 10px;
@@ -58,26 +68,30 @@ body {
   background-position: center top;
   transition: .3s ease-out;
 }
+
 input:active,
 input:focus,
 input:valid {
-    border: none;
-    outline: none;
-    background-position: center bottom;
+  border: none;
+  outline: none;
+  background-position: center bottom;
 }
+
 input::placeholder {
-    color: rgba(255, 255, 255, 0.4);
-    font-size: .6em;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: .6em;
   transition: .3s ease-out;
   font-weight: 500;
   font-family: 'Sofia';
   font-style: oblique;
 }
+
 input:active::placeholder,
 input:focus::placeholder,
 input:valid::placeholder {
-    opacity: 0;
+  opacity: 0;
 }
+
 ::-webkit-inner-spin-button {
   appearance: none;
 }
@@ -88,6 +102,7 @@ input:valid::placeholder {
   font-size: 1.2em;
   color: white;
 }
+
 .animate {
   font-style: italic;
   animation: zoomOutput 2s ease-out;
@@ -98,9 +113,11 @@ input:valid::placeholder {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.2);
   }
+
   100% {
     transform: scale(1);
   }
@@ -110,9 +127,11 @@ input:valid::placeholder {
   0% {
     cy: 10;
   }
+
   25% {
     cy: 3;
   }
+
   50% {
     cy: 10;
   }
@@ -149,6 +168,7 @@ button {
   -webkit-tap-highlight-color: transparent;
   z-index: 1;
 }
+
 button::before {
   background: #1f2335;
   border-radius: 50px;
@@ -167,6 +187,7 @@ button.ready .submitMessage svg {
   top: 1px;
   transition: top 0.4s ease 600ms, opacity 0.3s linear 600ms;
 }
+
 button.ready .submitMessage .button-text span {
   top: 0;
   opacity: 1;
@@ -177,9 +198,11 @@ button.loading::before {
   transition: width 0.3s ease;
   width: 80%;
 }
+
 button.loading .loadingMessage {
   opacity: 1;
 }
+
 button.loading .loadingCircle {
   animation-duration: 1s;
   animation-iteration-count: infinite;
@@ -191,18 +214,22 @@ button.complete .submitMessage svg {
   top: -30px;
   transition: none;
 }
+
 button.complete .submitMessage .button-text span {
   top: -8px;
   transition: none;
 }
+
 button.complete .loadingMessage {
   top: 80px;
 }
+
 button.complete .successMessage .button-text span {
   left: 0;
   opacity: 1;
   transition: all 0.2s ease calc(var(--d) + 1000ms);
 }
+
 button.complete .successMessage svg {
   stroke-dashoffset: 0;
   transition: stroke-dashoffset 0.3s ease-in-out 1.4s;
@@ -234,6 +261,7 @@ button.complete .successMessage svg {
   top: 8px;
   transition: all 0.2s ease var(--d);
 }
+
 .submitMessage svg {
   color: #5c86ff;
   margin-left: -1px;
@@ -249,6 +277,7 @@ button.complete .successMessage svg {
   transition: opacity 0.3s linear 0.3s,
     top 0.4s cubic-bezier(0.22, 0, 0.41, -0.57);
 }
+
 .loadingMessage svg {
   fill: #5c86ff;
   margin: 0;
@@ -259,6 +288,7 @@ button.complete .successMessage svg {
   left: 5px;
   transition: all 0.2s ease var(--dr);
 }
+
 .successMessage svg {
   color: #5cffa1;
   stroke-dasharray: 20;
@@ -276,68 +306,78 @@ button.complete .successMessage svg {
 }
 
 .card {
-    position: relative;
-    width: fit-content;
-    max-width: 95%;
-    height: 100%;
-    background: royalblue;
-    transition: 0.5s;
-    border-radius: 0px;
-    overflow: hidden;
-    padding: 5px;
+  position: relative;
+  width: fit-content;
+  max-width: 95%;
+  height: 100%;
+  background: royalblue;
+  transition: 0.5s;
+  border-radius: 0px;
+  overflow: hidden;
+  padding: 5px;
 }
+
 .card .lines {
-    position: absolute;
-    inset: 0;
-    background: #000;
-    overflow: hidden;
+  position: absolute;
+  inset: 0;
+  background: #000;
+  overflow: hidden;
 }
+
 .card .lines::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 800px;
-    height: 120px;
-    background: linear-gradient(transparent, #ff3c7b, #ff3c7b, #ff3c7b, transparent);
-    animation: animate 4s linear infinite;
-    animation-play-state: running;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 120px;
+  background: linear-gradient(transparent, #ff3c7b, #ff3c7b, #ff3c7b, transparent);
+  animation: animate 4s linear infinite;
+  animation-play-state: running;
 }
+
 @keyframes animate {
-    0% {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-    100% {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
+
 .card .lines::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 800px;
-    height: 120px;
-    background: linear-gradient(transparent, #ff3c7b, #ff3c7b, #ff3c7b, transparent);
-    animation: animateTwo 4s linear infinite;
-    animation-play-state: running;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 120px;
+  background: linear-gradient(transparent, #ff3c7b, #ff3c7b, #ff3c7b, transparent);
+  animation: animateTwo 4s linear infinite;
+  animation-play-state: running;
 }
+
 @keyframes animateTwo {
   0% {
-      transform: translate(-50%, -50%) rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
+
   100% {
-      transform: translate(-50%, -50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
 }
+
 @media screen and (max-width: 500px) {
-    .container {
-        padding: 40px 10px;
-    }
-    .container .dates {
-        gap: 10px;
-    }
-    .dates input {
-        padding: 10px 0;
-    }
+  .container {
+    padding: 40px 10px;
+  }
+
+  .container .dates {
+    gap: 10px;
+  }
+
+  .dates input {
+    padding: 10px 0;
+  }
 }
